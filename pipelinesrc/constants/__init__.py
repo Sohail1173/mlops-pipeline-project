@@ -9,6 +9,8 @@ MONGODB_URL_KEY="mongodb+srv://mdsohailahmed711:pxQ9Kb7IM75Y3UQR@insurance-clust
 ARTIFACT_DIR:str= "artifact"
 PIPELINE_NAME:str=""
 
+TARGET_COLUMN = "Response"
+
 DATA_INGESTION_COLLECTION_NAME: str = "insurance-cluster"
 DATA_INGESTION_DIR_NAME: str = "data_ingestion"
 DATA_INGESTION_FEATURE_STORE_DIR: str = "feature_store"
@@ -28,5 +30,7 @@ DATA_VALIDATION_REPORT_FILE_NAME:str="report.yaml"
 DATA_TRANSFORMATION_DIR_NAME:str="data_transformation"
 DATA_TRANSFORMATION_TRANSFORMED_DATA_DIR:str="transformed"
 DATA_TRANSFORMATION_TRANSFORMED_OBJECT_DIR:str="transformed_object"
+
+PREPROCESSING_OBJECT_FILE_NAME="preprocessing.pkl"
 
 
