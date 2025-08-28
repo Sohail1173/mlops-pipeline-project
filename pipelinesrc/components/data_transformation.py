@@ -102,9 +102,9 @@ class DataTrasformation:
 
         try:
             logging.info("Data Transformation started ")
-            rep_train_file_path=self.data_transformation_config.transformed_train_file_path.replace("csv","npy")
-            rep_test_file_path=self.data_transformation_config.transformed_test_file_path.replace("csv","npy")
-            print(f">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>{rep_train_file_path}")
+            # rep_train_file_path=self.data_transformation_config.transformed_train_file_path
+            # rep_test_file_path=self.data_transformation_config.transformed_test_file_path
+            # print(f">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>{rep_train_file_path}")
             if not self.data_validation_artifact.validation_status:
                 raise Exception(self.data_ingestion_artifact.message)
             tran_df=self.read_data(file_path=self.data_ingestion_artifact.trained_file_path)
@@ -158,12 +158,11 @@ class DataTrasformation:
 
 
             # print(f">>>>>>>>>self.data_transformation_config.transformed_train_file_path{self.data_transformation_config.transformed_train_file_path}")
-            rep_train_file_path=self.data_transformation_config.transformed_train_file_path.replace("csv","npy")
-            rep_test_file_path=self.data_transformation_config.transformed_test_file_path.replace("csv","npy")
+            
 
             save_object(self.data_transformation_config.transformed_object_file_path,preporcessor)
-            save_numpy_array_data(rep_train_file_path,array=train_arr)
-            save_numpy_array_data(rep_test_file_path,array=test_arr)
+            save_numpy_array_data(self.data_transformation_config.transformed_train_file_path,array=train_arr)
+            save_numpy_array_data(self.data_transformation_config.transformed_test_file_path,array=test_arr)
             logging.info("Saving transformation object and trasformed files")
 
 
