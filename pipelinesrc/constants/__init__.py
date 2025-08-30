@@ -1,10 +1,12 @@
 import os
 from datetime import date
+from dotenv import load_dotenv
+from pipelinesrc.constants import *
+load_dotenv()
 
 DB_NAME="insurance"
 COLLLECTION_NAME="insurance-cluster"
-MONGODB_URL_KEY="mongodb+srv://mdsohailahmed711:pxQ9Kb7IM75Y3UQR@insurance-cluster.pmwhhkz.mongodb.net/?retryWrites=true&w=majority&appName=insurance-cluster"
-
+MONGODB_URL_KEY=os.getenv("MONGODB_URL_KEY")
 
 ARTIFACT_DIR:str= "artifact"
 PIPELINE_NAME:str=""
@@ -39,7 +41,7 @@ MODEL_TRAINER_TRAINED_MODEL_DIR: str = "trained_model"
 MODEL_TRAINER_TRAINED_MODEL_NAME: str = "model.pkl"
 MODEL_TRAINER_EXPECTED_SCORE: float = 0.6
 MODEL_TRAINER_MODEL_CONFIG_FILE_PATH: str = os.path.join("config", "model.yaml")
-MODEL_TRAINER_N_ESTIMATORS=200
+MODEL_TRAINER_N_ESTIMATORS=150
 MODEL_TRAINER_MIN_SAMPLES_SPLIT: int = 7
 MODEL_TRAINER_MIN_SAMPLES_LEAF: int = 6
 MIN_SAMPLES_SPLIT_MAX_DEPTH: int = 10
@@ -47,6 +49,22 @@ MIN_SAMPLES_SPLIT_CRITERION: str = 'entropy'
 MIN_SAMPLES_SPLIT_RANDOM_STATE: int = 101
 
 MODEL_FILE_NAME = "model.pkl"
+
+
+# AWS_ACCESS_KEY_ID_ENV_KEY = os.getenv("AWS_ACCESS_KEY_ID_ENV_KEY")
+# AWS_SECRET_ACCESS_KEY_ENV_KEY =os.getenv("AWS_SECRET_ACCESS_KEY_ENV_KEY")
+# REGION_NAME = "us-east-1"
+
+AWS_ACCESS_KEY_ID_ENV_KEY = os.getenv("AWS_ACCESS_KEY_ID_ENV_KEY")
+AWS_SECRET_ACCESS_KEY_ENV_KEY = os.getenv("AWS_SECRET_ACCESS_KEY_ENV_KEY")
+REGION_NAME = "us-east-1"
+
+
+
+MODEL_EVALUATIO_CHANGED_THRESHOLD_SCORE:float=0.02
+MODEL_BUCKET_NAME="model-mlops-proj"
+MODEL_PUSHER_S3_KEY="model_registry"
+
 
 
 

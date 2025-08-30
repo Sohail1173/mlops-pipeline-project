@@ -2,7 +2,7 @@ import os
 import sys
 from pandas import DataFrame
 import pandas as pd
-from pipelinesrc.entity.artifact_entity  import DataIngestionArtifact,DataValidationArtifact,DataTransformationArtifact,ModelTrainerArtifact
+from pipelinesrc.entity.artifact_entity  import DataIngestionArtifact,DataValidationArtifact,DataTransformationArtifact,ModelTrainerArtifact,ClassificationMetricArtifact
 from pipelinesrc.entity.config_entity  import ModelTrainerConfig,DataIngestionConfig,DataTransformationCofig,DataValidationConfig
 from pipelinesrc.exception import MyException
 from pipelinesrc.logger import logging
@@ -49,8 +49,8 @@ class ModelTrainer:
             f1=f1_score(y_test,y_pred)
             precision=precision_score(y_test,y_pred)
             recall=recall_score(y_test,y_pred)
-            # metric_artifact=classification_report(f1_score=f1,precision_score=precision,recall_score=recall)
-            metric_artifact=classification_report(y_test,y_pred)
+            metric_artifact=ClassificationMetricArtifact(f1_score=f1,precision_score=precision,recall_score=recall)
+            # metric_artifact=cl(y_test,y_pred)
             return model,metric_artifact
         except Exception as e:
             raise MyException(e,sys) from e

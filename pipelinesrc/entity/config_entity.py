@@ -51,6 +51,23 @@ class ModelTrainerConfig:
     _random_state = MIN_SAMPLES_SPLIT_RANDOM_STATE
 
 
+@dataclass
+class ModelEvaluationConfig:
+    changed_threshold_score:float=MODEL_EVALUATIO_CHANGED_THRESHOLD_SCORE
+    bucket_name:str=MODEL_BUCKET_NAME
+    s3_model_key_path:str=MODEL_FILE_NAME
+
+@dataclass
+class ModelPusheConfig:
+    bucket_name:str=MODEL_BUCKET_NAME
+    s3_model_key_path:str=MODEL_FILE_NAME
+
+@dataclass
+class VehiclePredictorConfig:
+    model_file_path:str=MODEL_FILE_NAME
+    model_bucket_name:str=MODEL_BUCKET_NAME
+
+
 
 
 

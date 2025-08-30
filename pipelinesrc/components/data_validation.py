@@ -98,6 +98,7 @@ class DataValidation:
                 validation_status=validation_status,
                 message=validation_error_msf,
                 validation_report_file_path=self.data_validation_config.validation_report_file_path
+                # self.data_validation_config.validation_report_file_path
             )
 
             report_dir=os.path.dirname(self.data_validation_config.validation_report_file_path)
