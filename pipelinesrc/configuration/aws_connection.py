@@ -10,7 +10,7 @@ class S3Client:
 
     def __init__(self,region_name=REGION_NAME):
         
-        if S3Client.s3_resource==None or S3Client.S3Client==None:
+        if S3Client.s3_resource==None or S3Client.s3_client==None:
 
             _access_key_id=AWS_ACCESS_KEY_ID_ENV_KEY
             _secret_access_key=AWS_SECRET_ACCESS_KEY_ENV_KEY

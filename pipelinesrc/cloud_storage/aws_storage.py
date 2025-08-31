@@ -64,10 +64,12 @@ class SimpleStorageService:
         logging.info("Entered the get_file_object method of SimpleStorageService class")
         try:
             bucket=self.get_bucket(bucket_name)
-            file_objects=[file_object for file_object in bucket.objects.filter(prefix=filename)]
+            file_objects=[file_object for file_object in bucket.objects.filter(Prefix=filename)]
             fucn=lambda x:x[0] if len(x) == 1 else x
             file_objs=fucn(file_objects)
+            
             logging.info("Exited the get_file_object method of  SimpleStorageSerice class")
+            return file_objs
         except Exception as e:
             raise MyException(e,sys) from e
         
@@ -76,7 +78,7 @@ class SimpleStorageService:
     def load_model(self,model_name:str,bucket_name:str,model_dir:str=None) ->object:
 
         try:
-            model_file=model_dir+"/"+model_name if model_dir else model_name
+            model_file=model_dir + "/" + model_name if model_dir else model_name
             file_object=self.get_file_object(model_file,bucket_name)
             model_obj=self.read_object(file_object,decode=False)
             model=pickle.loads(model_obj)

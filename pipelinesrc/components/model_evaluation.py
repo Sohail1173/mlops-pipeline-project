@@ -142,17 +142,17 @@ class ModelEvaluation:
         except Exception as e:
             raise MyException(e,sys)
         
-if __name__ == "__main__":
-    ingestion=DataIngestion()
-    data_arti=ingestion.initiate_data_ingestion()
-    validation=DataValidation(data_ingestion_artifact=data_arti,data_validation_config=DataValidationConfig)
-    data_vali=validation.initiate_data_validation()
-    data_trans=DataTrasformation(data_ingestion_artifact=data_arti,data_validation_artifact=data_vali,data_transformation_config=DataTransformationCofig)
-    data_trans=data_trans.intiate_data_transformation()
-    trainer=ModelTrainer(data_transformation_artifact=data_trans,model_trainer_config=ModelTrainerConfig)
-    model_tra=trainer.intiate_model_trainer()
-    model_eval=ModelEvaluation(model_eval_config=ModelEvaluationConfig,data_ingestion_artifact=data_arti,model_trainer_artifact=model_tra)
-    model_eval.initiate_model_evaluation()
+# if __name__ == "__main__":
+#     ingestion=DataIngestion()
+#     data_arti=ingestion.initiate_data_ingestion()
+#     validation=DataValidation(data_ingestion_artifact=data_arti,data_validation_config=DataValidationConfig)
+#     data_vali=validation.initiate_data_validation()
+#     data_trans=DataTrasformation(data_ingestion_artifact=data_arti,data_validation_artifact=data_vali,data_transformation_config=DataTransformationCofig)
+#     data_trans=data_trans.intiate_data_transformation()
+#     trainer=ModelTrainer(data_transformation_artifact=data_trans,model_trainer_config=ModelTrainerConfig)
+#     model_tra=trainer.intiate_model_trainer()
+#     model_eval=ModelEvaluation(model_eval_config=ModelEvaluationConfig,data_ingestion_artifact=data_arti,model_trainer_artifact=model_tra)
+#     model_eval.initiate_model_evaluation()
     
 
 

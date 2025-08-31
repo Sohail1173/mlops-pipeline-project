@@ -24,7 +24,8 @@ class Proj1Estimator:
             return False
 
     def load_model(self,)->MyModel:
-
+        
+        print(f"self.s3.load_model(self.model_path,bucket_name=self.bucket_name)::{self.s3.load_model(self.model_path,bucket_name=self.bucket_name)}")
         return self.s3.load_model(self.model_path,bucket_name=self.bucket_name)
     
 
@@ -41,9 +42,11 @@ class Proj1Estimator:
     def predict(self,dataframe:DataFrame):
 
         try:
-            if self.load_model is None:
-                self.load_model=self.load_model()
-            return self.load_model.predict(dataframe=dataframe)
+            if self.loaded_model is None:
+                self.loaded_model=self.load_model()
+            return self.loaded_model.predict(dataframe=dataframe)
+        # predict(dataframe=dataframe)
+            
         except Exception as e:
             raise MyException(e,sys)
 
