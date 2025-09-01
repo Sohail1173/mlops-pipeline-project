@@ -7,7 +7,7 @@ load_dotenv()
 
 
 DB_NAME="insurance"
-COLLLECTION_NAME="insurance-cluster"
+COLLLECTION_NAME="insurance-cluster-01"
 MONGODB_URL_KEY=os.getenv("MONGODB_URL_KEY")
 
 ARTIFACT_DIR:str= "artifact"
@@ -67,6 +67,10 @@ MODEL_EVALUATIO_CHANGED_THRESHOLD_SCORE:float=0.02
 
 MODEL_BUCKET_NAME="model-mlops-proj"
 MODEL_PUSHER_S3_KEY="model_registry"
+
+
+APP_HOST="0.0.0.0"
+APP_PORT=5000
 
 
 

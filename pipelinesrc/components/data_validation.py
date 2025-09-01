@@ -118,8 +118,3 @@ class DataValidation:
         except Exception as e:
             raise MyException(e,sys) from e
         
-if __name__ == "__main__":
-    ingestion=DataIngestion()
-    data_arti=ingestion.initiate_data_ingestion()
-    validation=DataValidation(data_ingestion_artifact=data_arti,data_validation_config=DataValidationConfig)
-    validation.initiate_data_validation()
