@@ -28,8 +28,10 @@ class MyModel:
 
             transformed_feature=self.preprocessing_object.transform(dataframe)
             logging.info("Using the trained model to get predictions")
-            # predictions=self.trained_model_object.predict(transformed_feature)
+            print(f">>>>>>>>>transansformed_featuresin estimar{transformed_feature}")
             predictions=self.trained_model_object.predict(transformed_feature)
+            print(f">>>>>>>>>transansformed_featuresin estimar{predictions}")
+
             return predictions
         except Exception as e:
             logging.error("Error occurred in predict method",exc_info=True)

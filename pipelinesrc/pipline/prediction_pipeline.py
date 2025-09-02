@@ -16,8 +16,8 @@ class VehicleData:
                  Annual_Premium,
                  Policy_Sales_Channel,
                  Vintage,
-                 Vehicle_Age_1t_1_Year,
-                 Vehicle_Age_gt_2_Year,
+                 Vehicle_Age_lt_1_Year,
+                 Vehicle_Age_gt_2_Years,
                  Vehicle_Damage_Yes):
         try:
             self.Gender=Gender
@@ -28,8 +28,8 @@ class VehicleData:
             self.Annual_Premium=Annual_Premium
             self.Policy_Sales_Channel=Policy_Sales_Channel
             self.Vintage=Vintage
-            self.Vehicle_Age_1t_1_Year=Vehicle_Age_1t_1_Year
-            self.Vehicle_Age_gt_2_Year=Vehicle_Age_gt_2_Year
+            self.Vehicle_Age_lt_1_Year=Vehicle_Age_lt_1_Year
+            self.Vehicle_Age_gt_2_Years=Vehicle_Age_gt_2_Years
             self.Vehicle_Damage_Yes=Vehicle_Damage_Yes
 
         except Exception as e:
@@ -51,14 +51,14 @@ class VehicleData:
             input_data={
                 "Gender":[self.Gender],
                 "Age":[self.Age],
-                "Deriving_License":[self.Driving_License],
-                "Region_code":[self.Region_Code],
+                "Driving_License":[self.Driving_License],
+                "Region_Code":[self.Region_Code],
                 "Previously_Insured":[self.Previously_Insured],
                 "Annual_Premium":[self.Annual_Premium],
                 "Policy_Sales_Channel":[self.Policy_Sales_Channel],
                 "Vintage":[self.Vintage],
-                "Vehicle_Age_1t_1_Year":[self.Vehicle_Age_1t_1_Year],
-                "Vehicle_Age_gt_2_Year":[self.Vehicle_Age_gt_2_Year],
+                "Vehicle_Age_lt_1_Year":[self.Vehicle_Age_lt_1_Year],
+                "Vehicle_Age_gt_2_Years":[self.Vehicle_Age_gt_2_Years],
                 "Vehicle_Damage_Yes":[self.Vehicle_Damage_Yes],
             }
             logging.info("Created Vehicle data dict")

@@ -16,7 +16,7 @@ from pipelinesrc.exception import MyException
 
 app=FastAPI()
 
-app.mount("/statis",StaticFiles(directory="statis"),name="static")
+app.mount("/static",StaticFiles(directory="static"),name="static")
 
 template=Jinja2Templates(directory="templates")
 origins=["*"]
@@ -41,13 +41,13 @@ class DataForm:
         self.Annual_Premium:Optional[int]=None
         self.Policy_Sales_Channel:Optional[int]=None
         self.Vintage:Optional[int]=None
-        self.Vehicle_Age_1t_1_Year:Optional[int]=None
-        self.Vehicle_Age_gt_2_Year:Optional[int]=None
+        self.Vehicle_Age_lt_1_Year:Optional[int]=None
+        self.Vehicle_Age_gt_2_Years:Optional[int]=None
         self.Vehicle_Damage_Yes:Optional[int]=None
     
     async def get_vehicle_data(self):
 
-        form=await self.reques.form()
+        form=await self.request.form()
         self.Gender=form.get("Gender")
         self.Age=form.get("Age")
         self.Driving_License=form.get("Driving_License")
@@ -56,8 +56,8 @@ class DataForm:
         self.Annual_Premium=form.get("Annual_Premium")
         self.Policy_Sales_Channel=form.get("Policy_Sales_Channel")
         self.Vintage=form.get("Vintage")
-        self.Vehicle_Age_1t_1_Year=form.get("Vehicle_Age_1t_1_Year")
-        self.Vehicle_Age_gt_2_Year=form.get("Vehicle_Age_gt_2_Year")
+        self.Vehicle_Age_lt_1_Year=form.get("Vehicle_Age_lt_1_Year")
+        self.Vehicle_Age_gt_2_Years=form.get("Vehicle_Age_gt_2_Years")
         self.Vehicle_Damage_Yes=form.get("Vehicle_Damage_Yes")
 
     @app.get("/",tags=["authentication"])
@@ -90,12 +90,14 @@ Previously_Insured=form.Previously_Insured,
 Annual_Premium=form.Annual_Premium,
 Policy_Sales_Channel=form.Policy_Sales_Channel,
 Vintage=form.Vintage,
-Vehicle_Age_1t_1_Year=form.Vehicle_Age_1t_1_Year,
-Vehicle_Age_gt_2_Year=form.Vehicle_Age_gt_2_Year,
+Vehicle_Age_lt_1_Year=form.Vehicle_Age_lt_1_Year,
+Vehicle_Age_gt_2_Years
+
+
+
+=form.Vehicle_Age_gt_2_Years,
 Vehicle_Damage_Yes=form.Vehicle_Damage_Yes
             )
-
-
             vehicle_df=vehicle_data.get_vehicle_input_data_frame()
             model_predictor=VehicleDataClassifier()
             value=model_predictor.predict(dataframe=vehicle_df)[0]
@@ -106,10 +108,5 @@ Vehicle_Damage_Yes=form.Vehicle_Damage_Yes
             )
         except Exception as e:
            return {"status":False,"error":f"{e}"}
-        
-
 if __name__ == "__main__":
     app_run(app,host=APP_HOST,port=APP_PORT)
-
-
-        
