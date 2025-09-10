@@ -66,7 +66,8 @@ REGION_NAME = "us-east-1"
 MODEL_EVALUATIO_CHANGED_THRESHOLD_SCORE:float=0.02
 
 MODEL_BUCKET_NAME="model-mlops-proj"
-MODEL_PUSHER_S3_KEY="model_registry"
+MODEL_PUSHER_S3_KEY="model"
+# z/"model_registry"
 
 
 APP_HOST = "127.0.0.1"

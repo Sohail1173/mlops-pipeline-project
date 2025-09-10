@@ -15,9 +15,6 @@ ca=certifi.where()
 
 class MongoDBClient:
     
-
-
-
     client=None
 
     def __init__(self,database_name:str=DB_NAME) ->None:
@@ -37,4 +34,4 @@ class MongoDBClient:
         except Exception as e:
             raise MyException(e,sys)
         
-# mon=MongoDBClient()
+mon=MongoDBClient()

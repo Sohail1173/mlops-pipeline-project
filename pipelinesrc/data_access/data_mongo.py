@@ -35,7 +35,7 @@ class Proj1Data:
             # for data in range(0,total_documents,20000):
                 # print(data)
             print(total_documents)
-            curosr=collection.find().limit(1000)
+            curosr=collection.find().limit(10000)
             print("Fetching data from mongoDB")
             df = pd.DataFrame(list(curosr))
             print(f"Data fecthed with len: {len(df)}")

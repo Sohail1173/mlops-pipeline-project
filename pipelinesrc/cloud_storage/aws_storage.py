@@ -7,6 +7,7 @@ from pipelinesrc.logger import logging
 from pipelinesrc.exception import MyException
 from pandas import DataFrame,read_csv
 from mypy_boto3_s3.service_resource import Bucket
+from pipelinesrc.constants import AWS_ACCESS_KEY_ID_ENV_KEY,AWS_SECRET_ACCESS_KEY_ENV_KEY,REGION_NAME,MODEL_PUSHER_S3_KEY
 
 import pickle
 
@@ -18,13 +19,16 @@ class SimpleStorageService:
         s3_client=S3Client()
         self.s3_resource=s3_client.s3_resource
         self.s3_client=s3_client.s3_client
+        self.s3_key=MODEL_PUSHER_S3_KEY
 
 
-    def s3_key_path_available(self,bucket_name,s3_key) ->bool:
+    def s3_key_path_available(self,bucket_name ,s3_key
+                              ) ->bool:
 
         try:
             bucket=self.get_bucket(bucket_name)
             file_objects=[file_object for file_object in bucket.objects.filter(Prefix=s3_key)]
+            print(f">>>>>>>>>>>>>>len {len(file_objects)}")
             return len(file_objects)>0
         
         except Exception as e:
@@ -52,6 +56,7 @@ class SimpleStorageService:
         try:
             bucket=self.s3_resource.Bucket(bucket_name)
             logging.info("Exited the get_bucket method of SimpleStorageSerice class")
+            print(f">>>>>>>>>>get_bucket{bucket}")
             return bucket
         
         except Exception as e:
@@ -101,3 +106,9 @@ class SimpleStorageService:
             logging.info("Exited the upload_file method of simplestorageservice class")
         except Exception as e:
             raise MyException(e,sys) from e
+        
+
+
+# storage=SimpleStorageService()
+# b_n=storage.get_bucket(bucket_name="model-mlops-proj")
+# storage.read_object(object_name="model.pkl")
