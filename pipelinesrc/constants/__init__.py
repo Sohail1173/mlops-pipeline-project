@@ -71,7 +71,7 @@ MODEL_PUSHER_S3_KEY="model"
 
 
 APP_HOST = "0.0.0.0"
-APP_PORT = 8000
+APP_PORT = 8080
 
 
 

@@ -12,6 +12,7 @@ from pipelinesrc.constants import *
 from pipelinesrc.pipline.prediction_pipeline import VehicleData,VehicleDataClassifier
 from pipelinesrc.pipline.training_pipeline import TrainPipeline
 from pipelinesrc.exception import MyException
+import uvicorn
 
 
 app=FastAPI()
@@ -110,3 +111,4 @@ Vehicle_Damage_Yes=form.Vehicle_Damage_Yes
            return {"status":False,"error":f"{e}"}
 if __name__ == "__main__":
     app_run(app,host=APP_HOST,port=APP_PORT)
+    # uvicorn.run(app, host="0.0.0.0", port=8000)
